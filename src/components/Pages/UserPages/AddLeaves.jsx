@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { updateLeave, getLeaves, getMyLeaves } from '../../../axios/authRequests';
+import { getMyLeaves } from '../../../axios/authRequests';
 import useAxios from '../../../axios/httpServices';
-import { Button, Box, Card, CardActions, CardContent, FormControl, Grid, InputLabel, MenuItem, Modal, Select, Typography } from '@mui/material'
+import { Button, Box, Card, CardContent, Grid, Modal, Typography } from '@mui/material'
 import { useCookies } from "react-cookie";
 import AddLeave from './AddLeave';
 const style = {
@@ -38,7 +38,7 @@ const Home = () => {
             }
         }
         getLeaves()
-    }, [cookies])
+    }, [cookies,excuteGetLeaves])
     const [open, setOpen] = useState(false);
     const handleOpen = () => {
         setOpen(true);
@@ -81,7 +81,7 @@ const Home = () => {
                                     </Typography>
                                     {leave.image &&
                                         <Box width={'300px'} >
-                                            <img style = {{width:'100%'}} src={leave.image} />
+                                            <img alt="leaveimage" style={{ width: '100%' }} src={leave.image} />
                                         </Box>
                                     }
                                 </CardContent>

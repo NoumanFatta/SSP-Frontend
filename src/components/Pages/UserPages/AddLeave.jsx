@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -7,8 +6,6 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { addLeave } from '../../../axios/authRequests';
-import useAxios from '../../../axios/httpServices';
 import { useCookies } from "react-cookie";
 import Axios from "axios";
 
@@ -21,9 +18,7 @@ export default function AddLeave(props) {
     const headers = {
         token
     }
-    const [, executeAddLeave] = useAxios(addLeave(token), {
-        manual: true,
-    });
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);

@@ -42,7 +42,7 @@ const AddAdmin = () => {
         e.preventDefault();
         try {
             const data = loginData;
-            const response = await executeAddAdmin({ data });
+            await executeAddAdmin({ data });
             setLoginData({
                 name: "",
                 email: "",
@@ -52,8 +52,6 @@ const AddAdmin = () => {
         } catch (error) {
             showAlert(error.response.data.error, "danger")
         }
-
-
     };
 
     return (

@@ -44,7 +44,7 @@ const AddCourses = () => {
             setCourses(response.data.courses);
         }
         getAllCourses()
-
+        // eslint-disable-next-line
     }, [])
 
 

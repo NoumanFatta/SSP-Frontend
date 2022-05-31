@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { updateLeave, getLeaves } from '../../axios/authRequests';
 import useAxios from '../../axios/httpServices';
-import { Box, Button, Card, CardActions, CardContent, FormControl, FormControlLabel, FormLabel, InputLabel, MenuItem, Modal, Radio, RadioGroup, Select, Typography } from '@mui/material';
+import { Box, Button, Card, CardActions, CardContent, FormControl, FormControlLabel, FormLabel, Modal, Radio, RadioGroup, Typography } from '@mui/material';
 import { useCookies } from "react-cookie";
 import { MainContext } from '../../App'
 
@@ -38,10 +38,11 @@ const Home = () => {
   const [, executeUpdateLeave] = useAxios(updateLeave(token, leaveId), {
     manual: true,
   });
-  const { alert, showAlert } = useContext(MainContext)
+  const { showAlert } = useContext(MainContext)
   useEffect(() => {
     const getLeaves = async () => {
       try {
+        // eslint-disable-next-line
         const result = await excuteGetLeaves()
         setLeaves(result.data.leaves);
       } catch (error) {
@@ -49,6 +50,7 @@ const Home = () => {
       }
     }
     getLeaves()
+    // eslint-disable-next-line
   }, [])
 
   const [status, setStatus] = useState('')
@@ -86,7 +88,7 @@ const Home = () => {
               </Typography>
               {openedLeave.image &&
                 <Box width={'300px'} >
-                  <img style={{ width: '100%' }} src={openedLeave.image} />
+                  <img alt="leaveimage" style={{ width: '100%' }} src={openedLeave.image} />
                 </Box>
               }
             </CardContent>

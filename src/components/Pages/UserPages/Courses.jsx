@@ -41,7 +41,7 @@ const Courses = () => {
       setCourses(response.data.courses);
     }
     getAllCourses()
-
+    // eslint-disable-next-line
   }, [])
 
   const [open, setOpen] = useState(false);
@@ -141,7 +141,7 @@ const Courses = () => {
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button disabled={!course.status || token && decodeToken(token).isApplied} onClick={() => handleOpen(course._id)} variant='contained' >
+                  <Button disabled={!(course.status) || (token && decodeToken(token).isApplied)} onClick={() => handleOpen(course._id)} variant='contained' >
                     {token && decodeToken(token).isApplied ? "Already applied" : 'Apply'}
                   </Button>
                 </CardActions>

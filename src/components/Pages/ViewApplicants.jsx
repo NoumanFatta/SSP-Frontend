@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -16,20 +16,21 @@ import * as XLSX from 'xlsx';
 const ViewApplicants = () => {
     const [cookies] = useCookies()
     const token = cookies.token
-    const [rows, setRows] = React.useState([]);
-    const [tableRow, setTableRow] = React.useState([]);
+    const [rows, setRows] = useState([]);
+    const [tableRow, setTableRow] = useState([]);
     const [, executeGetForms] = useAxios(getForms(token), {
         manual: true,
     });
-    React.useEffect(() => {
+    useEffect(() => {
         const getStudents = async () => {
             const response = await executeGetForms()
             setTableRow(response.data)
             response.data.forEach(data => {
-                setRows((prev) => [...prev, { ...data,  course: data.course._id }])
+                setRows((prev) => [...prev, { ...data, course: data.course._id }])
             });
         }
         getStudents()
+        // eslint-disable-next-line
     }, [])
     const handleExport = () => {
 

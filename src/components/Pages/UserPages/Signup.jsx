@@ -20,7 +20,7 @@ const theme = createTheme();
 
 
 export default function SignUp() {
-    const [cookies, setCookie, removeCookie] = useCookies();
+    const [, setCookie] = useCookies();
 
     const roleNum = React.useRef()
 

@@ -18,12 +18,12 @@ const AddStudents = () => {
             )
         ) {
             data.append("studentsFile", newFile);
-            Axios.post("http://localhost:8000/auth/addStudent", data, {
+            // Axios.post("http://localhost:8000/auth/addStudent", data, {
+            //     headers: headers
+            // })
+            Axios.post("https://ssp-backend-node.herokuapp.com/auth/addStudent", data, {
                 headers: headers
             })
-                // Axios.post("https://ssp-backend-node.herokuapp.com/auth/addStudent", data, {
-                //     headers: headers
-                // })
                 .then((res) => showAlert('Students Successfully Added', "success"))
                 .catch((err) => console.log(err));
         } else {

@@ -27,12 +27,12 @@ export default function AddLeave(props) {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        Axios.post("http://localhost:8000/leaves/addLeave", data, {
-            headers: headers
-        })
-        // Axios.post("https://ssp-backend-node.herokuapp.com/leaves/addLeave", data, {
+        // Axios.post("http://localhost:8000/leaves/addLeave", data, {
         //     headers: headers
         // })
+        Axios.post("https://ssp-backend-node.herokuapp.com/leaves/addLeave", data, {
+            headers: headers
+        })
             .then((response) => {
                 props.setLeaves((prev) => {
                     return [
